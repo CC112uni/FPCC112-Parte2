@@ -4,29 +4,22 @@ Luego, llena el arreglo con números ingresados por el usuario.*/
 #include <iostream>
 using namespace std;
 
-void llenarArreglo(int *p, int tam){
+void llenarArreglo(int *arr, int tam){
     for(int i = 0; i <tam; ++i){
         cout << "Ingrese el elemto " << i+1 << ": ";
-        cin >> p[i];
+        cin >> arr[i];
     }
 }
 
 
 int main(){
-    int N;
-    cout << "Ingrese el tamaño";
-    cin >> N;
+    int tam;
+    cout << "Ingrese el tamaño: ";
+    cin >> tam;
 
-    //Asignación dinámica
+    int * arr = new int[tam];
 
-    int * arr = new int[N];
-
-    llenarArreglo(arr, N);
-
-    //implemente su función para calcular el promedio
-
-    //Cuidado! EL OPERADOR DE DIVISIÓN / DEVUELVE EL COCIENTE ENTERO SI SUS OPERANDOS SON ENTEROS
-
+    llenarArreglo(arr, tam);
 
     delete [] arr;
 
