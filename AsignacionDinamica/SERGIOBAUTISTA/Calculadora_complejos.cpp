@@ -61,30 +61,30 @@ int main(){
         case 1 :
             {Complejo x = suma(z1, z2);
             cout<<"Numeros ingresados:"<<endl;
-            cout<<"Primer numero: "<<z1.real<<" + "<<z1.imaginario;
-            cout<<"Segundo numero: "<<z2.real<<" + "<<z2.imaginario;
-            cout<<"Resultado: "<<z3.real<<" + "<<z3.imaginario;
+            cout<<"Primer numero: "<<z1.real<<" + "<<z1.imaginario<<"i"<<endl;
+            cout<<"Segundo numero: "<<z2.real<<" + "<<z2.imaginario<<"i"<<endl;
+            cout<<"Resultado: "<<z3.real<<" + "<<z3.imaginario<<"i"<<endl;
             }break;
         case 2 :
             {Complejo y = resta(z1, z2);
             cout<<"Numeros ingresados:"<<endl;
-            cout<<"Primer numero: "<<z1.real<<" + "<<z1.imaginario;
-            cout<<"Segundo numero: "<<z2.real<<" + "<<z2.imaginario;
-            cout<<"Resultado: "<<z3.real<<" + "<<z3.imaginario;
+            cout<<"Primer numero: "<<z1.real<<" + "<<z1.imaginario<<"i"<<endl;
+            cout<<"Segundo numero: "<<z2.real<<" + "<<z2.imaginario<<"i"<<endl;
+            cout<<"Resultado: "<<z3.real<<" + "<<z3.imaginario<<"i"<<endl;
             }break;
         case 3 :
             {Complejo m = multiplicacion(z1, z2);
             cout<<"Numeros ingresados:"<<endl;
-            cout<<"Primer numero: "<<z1.real<<" + "<<z1.imaginario;
-            cout<<"Segundo numero: "<<z2.real<<" + "<<z2.imaginario;
-            cout<<"Resultado: "<<z3.real<<" + "<<z3.imaginario;
+            cout<<"Primer numero: "<<z1.real<<" + "<<z1.imaginario<<"i"<<endl;
+            cout<<"Segundo numero: "<<z2.real<<" + "<<z2.imaginario<<"i"<<endl;
+            cout<<"Resultado: "<<z3.real<<" + "<<z3.imaginario<<"i"<<endl;
             }break;
         case 4 :
             {Complejo n = division(z1, z2);
             cout<<"Numeros ingresados:"<<endl;
-            cout<<"Primer numero: "<<z1.real<<" + "<<z1.imaginario;
-            cout<<"Segundo numero: "<<z2.real<<" + "<<z2.imaginario;
-            cout<<"Resultado: "<<z3.real<<" + "<<z3.imaginario;
+            cout<<"Primer numero: "<<z1.real<<" + "<<z1.imaginario<<"i"<<endl;
+            cout<<"Segundo numero: "<<z2.real<<" + "<<z2.imaginario<<"i"<<endl;
+            cout<<"Resultado: "<<z3.real<<" + "<<z3.imaginario<<"i"<<endl;
             }break;
         default:
             cout<<"Opcion no valida"<<endl;
