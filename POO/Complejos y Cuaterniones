@@ -1,0 +1,183 @@
+#include<iostream>
+#include<cstdlib>
+#include<cmath>
+using namespace std;
+
+class Complejo{
+	private :
+		double real , imag ; //Atributos 
+	public : 
+		Complejo(double re=0.0,double im=0.0 ): real(re),imag(im){}; 	//Constructor 
+		Complejo sumar(Complejo &otro);
+		Complejo restar(Complejo &otro);
+		Complejo multiplicar(Complejo &otro);
+		Complejo dividir(Complejo&otro);
+		void imprimir();
+		void PedirValores();
+};
+class Cuaternion{
+	private:
+		double a,b,c,d; 
+	public :
+		Cuaternion(double a=0.0,double b=0.0,double c=0.0,double d=0.0): a(a),b(b),c(c),d(d){} ;
+		Cuaternion sumar(Cuaternion &otro);
+		Cuaternion restar(Cuaternion &otro);
+		Cuaternion multiplicar(Cuaternion &otro);
+		Cuaternion conjugado();
+		Cuaternion inversa();
+		double norma(); 
+		void imprimirCuat();
+		void PedirValoresCuat(); 
+};
+Complejo Complejo::sumar(Complejo &otro ){
+	cout<<"La suma es ";
+	return Complejo(real + otro.real,imag+otro.imag);
+}
+Complejo Complejo::restar(Complejo&otro){
+	cout<<"La resta es ";
+	return Complejo(real - otro.real,imag - otro.imag);
+}
+Complejo Complejo::multiplicar(Complejo &otro){
+	cout<<"La multiplicacion es ";
+	return Complejo(real*otro.real-imag*otro.imag,real*otro.imag+imag*otro.real);
+}
+Complejo Complejo::dividir(Complejo&otro){
+	//calculando el denominador
+	double denominador= otro.real*otro.real + otro.imag*otro.imag;
+	//verificar si el denominador es 0 
+	if(denominador==0){
+		cout<<"Error : denomiador es 0 "<<endl;
+		return Complejo();
+	}
+	//calculando la parte real e imaginaria 
+	double p_real=((real * otro.real + imag * otro.imag) / denominador);
+	double p_imag=((imag * otro.real - real * otro.imag) / denominador);
+	cout<<"La division es ";
+	return Complejo(p_real,p_imag);
+}
+void Complejo::PedirValores(){
+	cout<<"Ingrese la parte    real    del complejo (a+bi)"<<endl;
+	cin>>real; cin.ignore();
+	cout<<"Ingrese la parte imaginaria del complejo (a+bi) "<<endl;
+	cin>>imag; cin.ignore();
+}
+
+void Complejo::imprimir(){
+	 if(imag<0){
+        cout<<real<<" "<<imag<<"i"<<endl;
+    }else{
+        cout<<real<<" + "<<imag<<"i"<<endl;
+    }
+}
+Cuaternion Cuaternion::sumar(Cuaternion &otro){
+	cout<<"La suma de los cuaterniones es "<<endl;
+	return Cuaternion(a+otro.a,b+otro.b,c+otro.c,d+otro.d);
+}
+Cuaternion Cuaternion::restar(Cuaternion &otro){
+	cout<<"La resta de los cuaterniones es "<<endl;
+	return Cuaternion(a-otro.a,b-otro.b,c-otro.c,d-otro.d) ; 
+}
+Cuaternion Cuaternion::multiplicar(Cuaternion &otro){
+	double m_a= a*otro.a - b*otro.b - c*otro.c -d*otro.d;
+	double m_b= a*otro.b + b*otro.a + c*otro.d -d*otro.c;
+	double m_c= a*otro.c - b*otro.d + c*otro.a +d*otro.b;
+	double m_d= a*otro.d + b*otro.c - c*otro.b +d*otro.a;
+	cout<<"La multiplicacion  de los cuaterniones es "<<endl;
+	return Cuaternion(m_a,m_b,m_c,m_d);
+}
+Cuaternion Cuaternion::conjugado(){
+	cout<<"El conjugado es "<<endl;
+	return Cuaternion(a,-b,-c,-d);
+}
+double Cuaternion::norma(){
+	return sqrt(a*a+b*b+c*c+d*d); 
+}
+Cuaternion Cuaternion::inversa(){
+	double norma_cuadrada=a*a+b*b+c*c+d*d;
+	if(norma_cuadrada==0){
+		cout<<"No se puede calcular la inversa de un cuaternion con norma 0"<<endl;
+	 return Cuaternion();
+	}  
+	cout<<"La inversa del cuaternion es "<<endl;
+	return Cuaternion(a/norma_cuadrada,-b/norma_cuadrada,-c/norma_cuadrada,-d/norma_cuadrada);
+}
+void Cuaternion::PedirValoresCuat(){
+	cout<<"Ingrese el valor a de (a+bi+cj+dk)"<<endl;
+	cin>>a; cin.ignore();
+	cout<<"Ingrese el valor b de (a+bi+cj+dk)"<<endl;
+	cin>>b; cin.ignore();
+	cout<<"Ingrese el valor c de (a+bi+cj+dk)"<<endl;
+	cin>>c; cin.ignore();
+	cout<<"Ingrese el valor d de (a+bi+cj+dk)"<<endl;
+	cin>>d; cin.ignore();
+}
+void Cuaternion::imprimirCuat(){
+	cout<<a<<"+"<<b<<"i+"<<c<<"j+"<<d<<"k"<<endl;
+}
+int main(){
+	Complejo c1, c2;
+    cout<<" Ingrese el primer complejo (C1): "<<endl;
+    c1.PedirValores();
+    cout<<" Ingrese el segundo complejo (C2): "<<endl;
+    c2.PedirValores();
+    
+    cout<<" Complejos ingresados: "<<endl;
+    cout<<"C1: "; 
+    c1.imprimir(); 
+    cout<<"C2: ";
+    c2.imprimir();
+    
+    Complejo suma= c1.sumar(c2);
+    suma.imprimir();
+    
+    Complejo resta=c1.restar(c2);
+    resta.imprimir(); 
+    
+    Complejo multiplica=c1.multiplicar(c2);
+    multiplica.imprimir();
+    
+    Complejo divide=c1.dividir(c2);
+    divide.imprimir();
+    
+    
+    Cuaternion q1,q2;
+    cout<<"Ingrese el primer  cuaternion (q1) "<<endl;
+    q1.PedirValoresCuat();
+    cout<<"Ingrese el segundo cuaternion (q2) "<<endl; 
+    q2.PedirValoresCuat();
+    cout<<"Cuaterniones ingresados "<<endl;
+    cout<<"q1: "; 
+	q1.imprimirCuat();
+    cout<<"q2: "; 
+	q2.imprimirCuat();
+	
+    Cuaternion sumaq = q1.sumar(q2);
+    sumaq.imprimirCuat(); 
+    
+    Cuaternion restaq= q1.restar(q2);
+    restaq.imprimirCuat();
+    
+    Cuaternion multiplicarq=q1.multiplicar(q2);
+    multiplicarq.imprimirCuat();
+    
+    Cuaternion conj1=q1.conjugado();
+    conj1.imprimirCuat();
+    
+    Cuaternion conj2=q2.conjugado();
+    conj2.imprimirCuat();
+    
+    cout<<"La norma de q1 es "<<q1.norma()<<endl;
+    
+    
+    cout<<"La norma de q2 es "<<q2.norma()<<endl;
+    
+    
+    Cuaternion inv1=q1.inversa();
+    inv1.imprimirCuat();
+    
+    Cuaternion inv2=q2.inversa();
+    inv2.imprimirCuat();
+    
+	return 0 ; 
+}
+
